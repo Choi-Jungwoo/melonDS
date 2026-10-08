@@ -1,0 +1,16 @@
+[tools]
+cmake = "3.31.12"
+uv = "0.12.7"
+
+[tasks.docs-check]
+description = "检查复刻文档的链接、路由和源码覆盖"
+run = ["git diff --check", "uv run --no-project --python 3.13 tools/check-docs.py"]
+
+[tasks.configure-core]
+description = "配置用于阅读和对照的解释器、软件渲染核心"
+run = "cmake -S . -B build/core -DBUILD_QT_SDL=OFF -DENABLE_JIT=OFF -DENABLE_OGLRENDERER=OFF -DENABLE_GDBSTUB=OFF"
+
+[tasks.build-core]
+description = "构建最小 core 静态库；不包含可运行前端"
+depends = ["configure-core"]
+run = "cmake --build build/core --target core --parallel 4"

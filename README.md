@@ -35,6 +35,9 @@ As for the rest, the interface should be pretty straightforward. If you have a q
 ## How to build
 See [BUILD.md](./BUILD.md) for build instructions.
 
+## Architecture and reimplementation guide
+See [模拟器逻辑与复刻文档](./docs/README.md) for the Chinese architecture guide, subsystem routes, source map, and implementation and validation milestones.
+
 ## TODO LIST
 
  * better DSi emulation
